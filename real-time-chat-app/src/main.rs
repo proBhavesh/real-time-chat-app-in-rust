@@ -6,8 +6,7 @@ fn world()->&'static str{
 }
 
 #[launch]
-
 fn rocket()->_{
-    rocket::build():
+    rocket::build()
         .mount("/hello", routes![world])
 }
