@@ -10,3 +10,8 @@ fn rocket()->_{
     rocket::build()
         .mount("/hello", routes![world])
 }
+
+#[post("/message", data="<form>")]
+fn post(form: Form<Message>, queue: &State<Sender<Message>>){
+    let _res=queue.send(form.to_inner())
+}
